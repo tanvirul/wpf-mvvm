@@ -1,0 +1,6 @@
+C:\Users\DELL\source\repos\ITARoutePlanner\ITARoutePlanner.View\obj\Debug\net5.0-windows\ITARoutePlanner.View.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\ITARoutePlanner\ITARoutePlanner.View\obj\Debug\net5.0-windows\MainWindow.g.cs
+C:\Users\DELL\source\repos\ITARoutePlanner\ITARoutePlanner.View\obj\Debug\net5.0-windows\App.g.cs
+C:\Users\DELL\source\repos\ITARoutePlanner\ITARoutePlanner.View\obj\Debug\net5.0-windows\ITARoutePlanner.View_MarkupCompile.cache
+C:\Users\DELL\source\repos\ITARoutePlanner\ITARoutePlanner.View\obj\Debug\net5.0-windows\ITARoutePlanner.View_MarkupCompile.lref
+C:\Users\DELL\source\repos\ITARoutePlanner\ITARoutePlanner.View\obj\Debug\net5.0-windows\Views\SpacecraftView.g.cs
