@@ -1,4 +1,7 @@
-﻿using ITARoutePlanner.View.HostBuilders;
+﻿using ITARoutePlanner.EF;
+using ITARoutePlanner.View.HostBuilders;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
@@ -34,14 +37,14 @@ namespace ITARoutePlanner.View
         {
             _host.Start();
 
-            //SimpleTraderDbContextFactory contextFactory = _host.Services.GetRequiredService<SimpleTraderDbContextFactory>();
-            //using (SimpleTraderDbContext context = contextFactory.CreateDbContext())
-            //{
-            //    context.Database.Migrate();
-            //}
+            ITARoutePlannerDbContextFactory contextFactory = _host.Services.GetRequiredService<ITARoutePlannerDbContextFactory>();
+            using (ITARoutePlannerDbContext context = contextFactory.CreateDbContext())
+            {
+                context.Database.Migrate();
+            }
 
-            //Window window = _host.Services.GetRequiredService<MainWindow>();
-            //window.Show();
+            Window window = _host.Services.GetRequiredService<MainWindow>();
+            window.Show();
 
             base.OnStartup(e);
         }

@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ITARoutePlanner.EF;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace ITARoutePlanner.View.HostBuilders
 {
@@ -17,8 +20,8 @@ namespace ITARoutePlanner.View.HostBuilders
                 string connectionString = context.Configuration.GetConnectionString("sqlite");
                 Action<DbContextOptionsBuilder> configureDbContext = o => o.UseSqlite(connectionString);
 
-                //services.AddDbContext<SimpleTraderDbContext>(configureDbContext);
-                //services.AddSingleton<SimpleTraderDbContextFactory>(new SimpleTraderDbContextFactory(configureDbContext));
+                services.AddDbContext<ITARoutePlannerDbContext>(configureDbContext);
+                services.AddSingleton<ITARoutePlannerDbContextFactory>(new ITARoutePlannerDbContextFactory(configureDbContext));
             });
 
             return host;

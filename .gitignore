@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/ITARoutePlanner.Domain/bin/Debug/net5.0
+/.vs/ITARoutePlanner
+/ITARoutePlanner.Domain/obj
+/ITARoutePlanner.EF/bin/Debug/net5.0
+/ITARoutePlanner.EF/obj
+/ITARoutePlanner.View/bin/Debug/net5.0-windows
