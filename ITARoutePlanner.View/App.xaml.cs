@@ -1,12 +1,16 @@
-﻿using ITARoutePlanner.EF;
+﻿using ITARoutePlanner.Domain.Models;
+using ITARoutePlanner.EF;
+using ITARoutePlanner.View.DataModel;
 using ITARoutePlanner.View.HostBuilders;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,14 +37,25 @@ namespace ITARoutePlanner.View
                 .AddViewModels()
                 .AddViews();
         }
-        protected override void OnStartup(StartupEventArgs e)
+        protected async override void OnStartup(StartupEventArgs e)
         {
             _host.Start();
 
             ITARoutePlannerDbContextFactory contextFactory = _host.Services.GetRequiredService<ITARoutePlannerDbContextFactory>();
             using (ITARoutePlannerDbContext context = contextFactory.CreateDbContext())
             {
+                var jsonData = JsonConvert.DeserializeObject<Data>(File.ReadAllText(@"data.json"));
+              
+
                 context.Database.Migrate();
+                await context.Database.MigrateAsync();
+                var hasData = await context.Spacecrafts.AnyAsync();
+               
+
+                if (!hasData)
+                {
+                    var json = JsonConvert.DeserializeObject<object>(File.ReadAllText(@"data.json"));
+                }
             }
 
             Window window = _host.Services.GetRequiredService<MainWindow>();
