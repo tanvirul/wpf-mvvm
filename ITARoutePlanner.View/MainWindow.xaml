@@ -1,4 +1,19 @@
-﻿<Window x:Class="ITARoutePlanner.View.MainWindow"
+﻿<!--<Window x:Class="ITARoutePlanner.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ITARoutePlanner.View"
+        mc:Ignorable="d"
+        xmlns:controls="clr-namespace:ITARoutePlanner.WPF.Controls"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </ScrollViewer>
+    </Grid>
+</Window>-->
+<Window x:Class="ITARoutePlanner.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,6 +22,24 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
+        <Grid Grid.Row="0">
+            <Grid.Style>
+                <Style TargetType="Grid">
+                    <Style.Triggers>
+                        
+                    </Style.Triggers>
+                </Style>
+            </Grid.Style>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <ContentControl Content="{Binding CurrentViewModel}"/>
+        </ScrollViewer>
     </Grid>
 </Window>
+
