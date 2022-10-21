@@ -19,7 +19,7 @@ namespace ITARoutePlanner.EF
         public ITARoutePlannerDbContext CreateDbContext()
         {
             DbContextOptionsBuilder<ITARoutePlannerDbContext> options = new DbContextOptionsBuilder<ITARoutePlannerDbContext>();
-
+            
             _configureDbContext(options);
 
             return new ITARoutePlannerDbContext(options.Options);

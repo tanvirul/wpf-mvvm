@@ -45,23 +45,31 @@ namespace ITARoutePlanner.View
             using (ITARoutePlannerDbContext context = contextFactory.CreateDbContext())
             {
                 var jsonData = JsonConvert.DeserializeObject<Data>(File.ReadAllText(@"data.json"));
-              
-
-                context.Database.Migrate();
                 await context.Database.MigrateAsync();
-                var hasData = await context.Spacecrafts.AnyAsync();
-               
-
-                if (!hasData)
-                {
-                    var json = JsonConvert.DeserializeObject<object>(File.ReadAllText(@"data.json"));
-                }
             }
+            await SeedDb();
 
             Window window = _host.Services.GetRequiredService<MainWindow>();
             window.Show();
 
             base.OnStartup(e);
+        }
+
+        private async Task SeedDb()
+        {
+            ITARoutePlannerDbContextFactory contextFactory = _host.Services.GetRequiredService<ITARoutePlannerDbContextFactory>();
+            using (ITARoutePlannerDbContext context = contextFactory.CreateDbContext())
+            {
+                var hasData = await context.Spacecrafts.AnyAsync();
+                if (!hasData)
+                {
+                    var jsonData = JsonConvert.DeserializeObject<Data>(File.ReadAllText(@"data.json"));
+                    await context.Planetes.AddRangeAsync(jsonData.Planets);
+                    await context.Spacecrafts.AddRangeAsync(jsonData.Spacecrafts);
+                    await context.SaveChangesAsync();
+
+                }
+            }
         }
 
         protected override async void OnExit(ExitEventArgs e)
