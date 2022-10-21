@@ -67,7 +67,6 @@ namespace ITARoutePlanner.View
                     await context.Planetes.AddRangeAsync(jsonData.Planets);
                     await context.Spacecrafts.AddRangeAsync(jsonData.Spacecrafts);
                     await context.SaveChangesAsync();
-
                 }
             }
         }

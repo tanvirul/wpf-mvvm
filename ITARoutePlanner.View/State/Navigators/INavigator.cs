@@ -10,7 +10,8 @@ namespace ITARoutePlanner.View.State.Navigators
     public enum ViewType
     {
         Spacecraft,
-        Home        
+        Home,
+        RoutePlanner
     }
 
     public interface INavigator

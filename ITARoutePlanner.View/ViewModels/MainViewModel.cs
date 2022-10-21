@@ -26,7 +26,7 @@ namespace ITARoutePlanner.View.ViewModels
             _navigator.StateChanged += Navigator_StateChanged;
 
             UpdateCurrentViewModelCommand = new UpdateCurrentViewModelCommand(navigator, _viewModelFactory);
-            UpdateCurrentViewModelCommand.Execute(ViewType.Spacecraft);
+            UpdateCurrentViewModelCommand.Execute(ViewType.RoutePlanner);
         }
 
 
